@@ -199,7 +199,10 @@ sub outofdate($$$) {
                 local $_;
                 while (<FILE>) {
                     $rev = $1, $orev=$2, last
-                        if /<!--\s*English\s+Revision:\s*(\S+)\s+
+                        if /<!--\s*English\s+Revision:\s*([^\s:]+)
+                            (?::(\S+)\s+\(outdated\))?\s+-->/xi
+                                             or
+                           /<!--\s*English\s+Revision:\s*(\S+)\s+
                             (?:\(outdated:\s*(\S+)\s*\)\s+)?-->/xi;
                 }
             }
@@ -220,9 +223,15 @@ sub outofdate($$$) {
                     close(FILE)
                         or die "could not close file '$curpath' ($!), stopped";
 
-                    $cont =~ s{<!--\s*English\s+Revision:\s*(\S+)\s+
-                               (?:\(outdated[^)]*\)\s+)?-->}
-                        {<!-- English Revision: $1 (outdated: $reven) -->}ix;
+                    unless (
+                        $cont =~ s{<!--\s*English\s+Revision:\s*([^\s:]+)
+                                   (?::\S+\s+\(outdated\))?\s+-->}
+                            {<!-- English Revision: $1:$reven (outdated) -->}ix
+                    ) {
+                        $cont =~ s{<!--\s*English\s+Revision:\s*(\S+)\s+
+                                   (?:\(outdated[^)]*\)\s+)?-->}
+                            {<!-- English Revision: $1:$reven (outdated) -->}ix
+                    }
 
                     sysopen(FILE, "$curpath.tmp", O_WRONLY | O_CREAT | O_TRUNC)
                         or die "could not open file '$curpath.tmp' ($!), stopped";
