@@ -411,6 +411,7 @@
         <!-- iterate over all (1) files -->
         <nroff.generic.loop lang="@{lang}" section="1"
                 files="dbmmanage${inputext.@{lang}}
+                       htdbm${inputext.@{lang}}
                        htdigest${inputext.@{lang}}
                        htpasswd${inputext.@{lang}}"/>
 
