@@ -23,7 +23,7 @@
 <!-- include the additional tasks from ant-contrib.                       -->
 <!-- we need for example the <for> task.                                  -->
 <!--                                                                      -->
-<taskdef resource="net/sf/antcontrib/antcontrib.properties" />
+<taskdef resource="net/sf/antcontrib/antlib.xml" />
 
 <!-- Catalog of public W3C resources and their local copies.              -->
 <!-- These entitity definitions will magically injected into              -->

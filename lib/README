@@ -7,17 +7,17 @@ allmodules.pl
     Description: maintenance script for mod/allmodules.xml*
 
 ant.jar
+ant-apache-oro.jar
 ant-bootstrap.jar
-ant-jakarta-oro.jar
 ant-launcher.jar
 ant-nodeps.jar
 ant-trax.jar
 (lcp.bat)
-    Description: ant, version 1.6.1
+    Description: ant, version 1.6.5
     URL: http://ant.apache.org/
 
 ant-contrib.jar
-    Description: ant-contrib (ant add-on), version 1.0b1
+    Description: ant-contrib (ant add-on), version 1.0b2
     URL: http://sourceforge.net/projects/ant-contrib/
 
 DocUtil.pm
@@ -39,5 +39,5 @@ xalan.jar
 
 xercesImpl.jar
 xml-apis.jar
-    Description: xerces XML parser, version 2.6.2
+    Description: xerces XML parser, version 2.7.0
     URL: http://xml.apache.org/xerces2-j/
