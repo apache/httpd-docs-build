@@ -52,26 +52,15 @@
     <dependencies.typemaps />
 
     <!-- iterate over all desired files -->
-    <for param="srcfile">
-        <path>
-            <fileset dir="../" includes="**/*.xml.meta">
-                <patternset refid="excludes" />
-                <patternset refid="scratch" />
-            </fileset>
-        </path>
+    <xslt style="../style/xsl/typemap.xsl"
+            basedir="${ap.docroot}" destdir="${ap.docroot}"
+            includes="**/*.xml.meta">
+        <patternset refid="excludes" />
+        <patternset refid="scratch" />
 
-        <sequential>
-            <basename property="@{srcfile}.basename" file="@{srcfile}"
-                        suffix=".xml.meta"/>
-            <dirname  property="@{srcfile}.dirname"  file="@{srcfile}"/>
-
-            <xslt in="@{srcfile}"
-                 out="${@{srcfile}.dirname}/${@{srcfile}.basename}.html"
-               style="../style/xsl/typemap.xsl">
-                <xmlcatalog refid="w3c-catalog" />
-            </xslt>
-        </sequential>
-    </for>
+        <mapper type="glob" from="*.xml.meta" to="*.html" />
+        <xmlcatalog refid="w3c-catalog" />
+    </xslt>
 
     <echo message="typemaps are up to date." />
     <property name="typemaps.done" value="yes!" />
