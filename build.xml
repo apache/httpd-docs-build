@@ -244,27 +244,22 @@
 
     <dependencies.bootstrap />
 
+    <!-- Look for the languages -->
+    <property name="styledir" location="../style/" />
+    <property name="langdir" location="${styledir}/lang" />
+    <fileset dir="${langdir}" includes="**/*.xml" id="languagefiles" />
+    <pathconvert pathsep=" " dirsep="" refid="languagefiles"
+            property="languages">
+        <mapper type="glob" from="${langdir}/*.xml" to="*" />
+    </pathconvert>
+    <echo message="Found languages: ${languages}" />
+
     <!-- create basic styles -->
-    <var name="languages" value="" />
-    <for param="srcfile">
-        <path>
-            <fileset dir="../style/lang" includes="**/*.xml" />
-        </path>
-
-        <sequential>
-            <basename property="@{srcfile}.basename" file="@{srcfile}"
-                        suffix=".xml"/>
-            <dirname  property="@{srcfile}.dirname"  file="@{srcfile}"/>
-
-            <var name="languages" value="${languages} ${@{srcfile}.basename}" />
-
-            <xslt in="@{srcfile}"
-                 out="../style/manual.${@{srcfile}.basename}.xsl"
-               style="../style/xsl/language.xsl">
-                <param name="type" expression="manual" />
-            </xslt>
-        </sequential>
-    </for>
+    <xslt style="../style/xsl/language.xsl" force="yes"
+            basedir="${langdir}" destdir="${styledir}" includes="*.xml">
+        <mapper type="glob" from="*.xml" to="manual.*.xsl"/>
+        <param name="type" expression="manual" />
+    </xslt>
 
     <!-- create language list (in is unused -> arbitrary xml file) -->
     <xslt in="../style/lang/en.xml"
@@ -288,7 +283,7 @@
         <param name="type" expression="targets" />
     </xslt>
 
-    <!-- create allmodules list -->
+    <!-- create list of allmodules.xml.* files -->
     <xslt in="../style/_generated/list.xml"
          out="../style/xsl/util/allmodules.xml"
        style="../style/xsl/language.xsl">
