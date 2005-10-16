@@ -187,12 +187,13 @@
     <copy file="../_tools/lib/NOTICE" tofile="../_tools/lib/NOTICE.txt" />
 
     <!-- newline issues -->
-    <fixcrlf srcdir="../_tools" eol="crlf" includes="**/*.txt **/*.bat" />
-    <fixcrlf srcdir="../_tools" eol="lf" includes="**/*.sh **/*.pl
-                                                   **/*.pm **/README
-                                                   **/LICENSE **/NOTICE
-                                                   **/*.xml **/*.dtd **/*.ent
-                                                  "/>
+    <fixcrlf srcdir="../_tools" eol="crlf" encoding="iso-8859-1"
+        includes="**/*.txt **/*.bat" />
+    <fixcrlf srcdir="../_tools" eol="lf" encoding="iso-8859-1"
+        includes="**/*.sh **/*.pl
+                  **/*.pm **/README
+                  **/LICENSE **/NOTICE
+                  **/*.xml **/*.dtd **/*.ent" />
 
     <!-- get the current date -->
     <tstamp>
@@ -551,7 +552,8 @@
             <param name="httpd.version" expression="${ap.httpd.version}" />
             <xmlcatalog refid="w3c-catalog" />
         </xslt>
-        <fixcrlf srcdir="../_chm/@{lang}" eol="crlf" includes="manual.hhp" />
+        <fixcrlf srcdir="../_chm/@{lang}" eol="crlf" encoding="iso-8859-1"
+            includes="manual.hhp" />
 
         <!-- build toc from sitemap -->
         <xslt in="../_chm/@{lang}/sitemap${inputext.@{lang}}"
@@ -559,7 +561,8 @@
            style="../_chm/@{lang}/style/_generated/hhc.@{lang}.xsl">
             <xmlcatalog refid="w3c-catalog" />
         </xslt>
-        <fixcrlf srcdir="../_chm/@{lang}" eol="crlf" includes="toc.hhc" />
+        <fixcrlf srcdir="../_chm/@{lang}" eol="crlf" encoding="iso-8859-1"
+            includes="toc.hhc" />
 
         <!-- build not-yet-translated documents -->
         <if><not><equals arg1="@{lang}" arg2="en" /></not><then>
@@ -614,7 +617,8 @@
                 </xslt>
 
                 <fixcrlf srcdir="${@{srcfile}.dirname}" eol="crlf"
-                       includes="${@{srcfile}.basename}.html" />
+                    encoding="iso-8859-1"
+                    includes="${@{srcfile}.basename}.html" />
             </sequential>
         </for>
     </sequential>
@@ -648,8 +652,8 @@
                                dir="@{dir}" />
 
         <!-- Newline issues -->
-        <fixcrlf srcdir="../@{dir}/@{lang}" eol="lf"
-               includes="**/*.html **/*.css" />
+        <fixcrlf srcdir="../@{dir}/@{lang}" eol="lf" encoding="iso-8859-1"
+            includes="**/*.html **/*.css" />
 
         <!-- delete undistributed files -->
         <delete>
@@ -672,7 +676,7 @@
                           images/sub*  images/pixel*
                           **/.*
                          "/>
-        </delete> 
+        </delete>
         </then></if>
     </sequential>
 </macrodef>
@@ -751,12 +755,12 @@
         </xslt>
 
         <!-- Newline issues -->
-        <fixcrlf srcdir="../_off/@{lang}" eol="lf"
+        <fixcrlf srcdir="../_off/@{lang}" eol="lf" encoding="iso-8859-1"
                includes="**/*.rdf" />
 
         <!-- pack it -->
-        <delete file="${distdir}/httpd-docs-${ap.httpd.version}.@{lang}.maf.zip" />
-        <zip destfile="${distdir}/httpd-docs-${ap.httpd.version}.@{lang}.maf.zip"
+        <delete file="${distdir}/httpd-docs-${ap.httpd.version}.@{lang}.maff.zip" />
+        <zip destfile="${distdir}/httpd-docs-${ap.httpd.version}.@{lang}.maff.zip"
             compress="true"
             encoding="ASCII">
             <zipfileset prefix="httpd-docs-${ap.httpd.version}.@{lang}"
