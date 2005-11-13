@@ -113,7 +113,8 @@
                             xsl/common.xsl
                             xsl/util/*.xml
                             xsl/util/*.xsl
-                            lang/@{lang}.xml"
+                            lang/@{lang}.xml
+                            version.ent"
                   excludes="xsl/util/designations.xml
                             xsl/util/allmodules.xml" />
         <targetfileset dir="../"
@@ -232,7 +233,8 @@
             <srcfileset    dir="../style/"
                       includes="xsl/nroff.xsl
                                 xsl/util/*.xml
-                                lang/@{lang}.xml"
+                                lang/@{lang}.xml
+                                version.ent"
                       excludes="xsl/util/designations.xml
                                 xsl/util/allmodules.xml" />
             <targetfileset dir="../../man"

@@ -1,4 +1,9 @@
 <?xml version="1.0"?>
+<!DOCTYPE project [
+    <!ENTITY % HTTPD-VERSION SYSTEM "../style/version.ent">
+    %HTTPD-VERSION;
+]>
+
 <!--
  Copyright 2004-2005 The Apache Software Foundation or its licensors,
                      as applicable
@@ -99,6 +104,8 @@
 
 
 <!-- load version dependent properties -->
+<property name="ap.httpd.version"
+         value="&httpd.major;.&httpd.minor;.&httpd.patch;" />
 <property prefix="ap" file="../style/build.properties" />
 
 </project>
