@@ -43,6 +43,14 @@
     <path><pathelement path="..${file.separator}" /></path>
 </pathconvert>
 
+
+<!-- help                                                                 -->
+<!-- ==================================================================== -->
+<target name="help" description="- use `build -projecthelp` instead!">
+    <echo message="Try `build -projecthelp`" />
+</target>
+
+
 <!-- typemaps                                                             -->
 <!-- ==================================================================== -->
 <target name="typemaps" depends="metafiles" unless="typemaps.done"
