@@ -77,6 +77,7 @@ sub srcinfo(;$) {
 
     # use HTTP path separators (/)
     $docpath = join '/' => ('', File::Spec->splitdir($docpath), '');
+    1 while ($docpath =~ s,/\./,/,g); # something's bogus on the Mac otherwise
     $docpath =~ y,/,/,s; # squeeze multiple slashes
 
     # compute relative (HTTP-)path from srcfile to docroot
