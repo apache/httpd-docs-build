@@ -25,7 +25,7 @@ ANT_ARGS="-logger org.apache.tools.ant.NoBannerLogger $ANT_ARGS"
 # set regexp engine
 ANT_ARGS="-Dant.regexp.regexpimpl=org.apache.tools.ant.util.regexp.JakartaOroRegexp $ANT_ARGS"
 
-# raise stack size...
+# raise heap/stack size...
 ANT_OPTS="-Xmx128m -mx128m"
 
 # set classpath
@@ -37,13 +37,14 @@ ANT_HOME=.
 # OS specific support.  $var _must_ be set to either true or false.
 cygwin=false;
 darwin=false;
-case "`uname`" in
+case "`uname -a`" in
   CYGWIN*) cygwin=true ;;
   Darwin*) darwin=true
            if [ -z "$JAVA_HOME" ] ; then
              JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home   
            fi
            ;;
+  Linux*ppc*) ANT_OPTS="$ANT_OPTS -Xss1m -ss1m" ;;
 esac
 
 # For Cygwin, ensure paths are in UNIX format before anything is touched
