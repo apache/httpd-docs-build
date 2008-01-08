@@ -1,0 +1,3 @@
+To completely rebuild the doccos, use:
+
+      ./build.sh all convmap
