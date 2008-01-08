@@ -1,3 +1,8 @@
-To completely rebuild the doccos, use:
+To completely rebuild the trunk/2.2 doccos, use:
 
       ./build.sh all convmap
+
+For 2.0, use:
+
+      ./build.sh all
+
