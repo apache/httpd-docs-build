@@ -97,6 +97,7 @@ for $file (@files) {
     # create resulting file contents
     my $content = <<"    XML";
 <?xml version="1.0" encoding="UTF-8" ?>
+<!-- GENERATED FROM XML: DO NOT EDIT -->
 
 <metafile>
   <basename>$basename</basename>
@@ -271,6 +272,7 @@ __END__
 sample file:
 
 <?xml version="1.0" encoding="UTF-8" ?>
+<!-- GENERATED FROM XML: DO NOT EDIT -->
 
 <metafile>
   <basename>quickreference</basename>

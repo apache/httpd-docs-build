@@ -119,6 +119,7 @@ translated=@{[
 
     my $content = <<"    XML";
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- GENERATED FROM XML: DO NOT EDIT -->
 
 <modulefilelist>
   @{[ join "\n  " => map qq{<modulefile>$_</modulefile>} => @modules ]}
@@ -173,6 +174,7 @@ __END__
 sample file:
 
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- GENERATED FROM XML: DO NOT EDIT -->
 
 <modulefilelist>
     <modulefile>core.xml</modulefile>
