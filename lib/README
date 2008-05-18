@@ -32,9 +32,9 @@ jakarta-oro.jar
 
 xalan.jar
     Description: xalan (xslt processor), version 2.5.2 + patch
-    patch taken from http://nagoya.apache.org/bugzilla/show_bug.cgi?id=24278
+    patch taken from https://issues.apache.org/jira/browse/XALANJ-1710
       (second one:
-       http://nagoya.apache.org/bugzilla/showattachment.cgi?attach_id=9023)
+       https://issues.apache.org/jira/secure/attachment/17150/apache.patch.24279.txt )
     URL: http://xml.apache.org/xalan-j/
 
 xercesImpl.jar
