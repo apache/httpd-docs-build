@@ -747,28 +747,9 @@
         <then>
         <echo message="building ZIP package (@{lang})..." />
 
-        <!-- get the current date -->
-        <tstamp>
-            <format property="maf.date.@{lang}"
-                     pattern="EEE MMM dd yyyy HH:mm:ss 'GMT-0000 (UTC)'"
-                    timezone="UTC" locale="en, US" />
-        </tstamp>
-
-        <!-- generate RDF file -->
-        <xslt in="../index${inputext.@{lang}}"
-             out="../_off/@{lang}/index.rdf"
-           style="../style/xsl/maf.xsl">
-            <param name="date" expression="${maf.date.@{lang}}" />
-            <param name="lang" expression="@{lang}" />
-        </xslt>
-
-        <!-- Newline issues -->
-        <fixcrlf srcdir="../_off/@{lang}" eol="lf" encoding="iso-8859-1"
-               includes="**/*.rdf" />
-
         <!-- pack it -->
-        <delete file="${distdir}/httpd-docs-${ap.httpd.version}.@{lang}.maff.zip" />
-        <zip destfile="${distdir}/httpd-docs-${ap.httpd.version}.@{lang}.maff.zip"
+        <delete file="${distdir}/httpd-docs-${ap.httpd.version}.@{lang}.zip" />
+        <zip destfile="${distdir}/httpd-docs-${ap.httpd.version}.@{lang}.zip"
             compress="true"
             encoding="ASCII">
             <zipfileset prefix="httpd-docs-${ap.httpd.version}.@{lang}"
