@@ -111,7 +111,7 @@
 <!-- metafiles maintenance target.                                        -->
 <!-- If you're confused how to edit the *.xml.meta files, just run        -->
 <!-- `build metafiles`, which checks and possibly rebuilds them           -->
-<!-- automatically for you.                                               -->
+<!-- automatically for you.                                               --> 
 <!-- ==================================================================== -->
 <target name="metafiles" depends="modulelists" unless="metafiles.done"
         description="- (re-)builds all *.xml.meta files if necessary">
@@ -348,7 +348,7 @@
                 <basename property="@{srcfile}.basename" file="@{srcfile}"
                             suffix="${inputext.@{lang}}" />
                 <dirname  property="@{srcfile}.dirname"  file="@{srcfile}" />
-
+        
                 <!-- depends on the accompanying metafile -->
                 <dependset>
                     <srcfileset dir="${@{srcfile}.dirname}"
@@ -356,7 +356,7 @@
                     <targetfileset dir="${@{srcfile}.dirname}"
                        includes="${@{srcfile}.basename}${outputext.@{lang}}" />
                 </dependset>
-
+        
                 <xslt in="@{srcfile}"
                      out="${@{srcfile}.dirname}/${@{srcfile}.basename}${outputext.@{lang}}"
                    style="../style/manual.@{lang}.xsl">
@@ -445,14 +445,6 @@
     <attribute name="files" />
 
     <sequential>
-        <if><equals arg1="@{lang}" arg2="en" />
-            <then>
-                <property name="mandir" location="../../man" />
-            </then>
-            <else>
-                <property name="mandir" location="../../man/@{lang}" />
-            </else>
-        </if>
         <for param="srcfile">
             <path>
                 <fileset dir="../programs/" includes="@{files}" />
@@ -466,7 +458,7 @@
                 <dependset>
                     <srcfileset dir="${@{srcfile}.dirname}"
                            includes="${@{srcfile}.basename}.xml.meta" />
-                    <targetfileset dir="${mandir}/"
+                    <targetfileset dir="../../man/"
                            includes="${@{srcfile}.basename}.@{section}" />
                 </dependset>
 
@@ -474,17 +466,17 @@
                     <not>
                         <uptodate
                             srcfile="@{srcfile}"
-                         targetfile="${mandir}/${@{srcfile}.basename}.@{section}"
+                         targetfile="../../man/${@{srcfile}.basename}.@{section}"
                         />
                     </not>
                 <then>
                     <if>
                         <available
-                            file="${mandir}/${@{srcfile}.basename}.@{section}.tmp"
+                            file="../../man/${@{srcfile}.basename}.@{section}.tmp"
                         />
                     <then>
-                        <copy file="${mandir}/${@{srcfile}.basename}.@{section}.tmp"
-                            tofile="${mandir}/${@{srcfile}.basename}.@{section}.old"
+                        <copy file="../../man/${@{srcfile}.basename}.@{section}.tmp"
+                            tofile="../../man/${@{srcfile}.basename}.@{section}.old"
                             preservelastmodified="true" overwrite="true" />
 
                         <!-- sample line:                                         -->
@@ -492,7 +484,7 @@
                         <!-- we replace  ^^^^^^^^^^ the date with @@date@@        -->
                         <!--                                                      -->
                         <replaceregexp
-                             file="${mandir}/${@{srcfile}.basename}.@{section}.tmp"
+                             file="../../man/${@{srcfile}.basename}.@{section}.tmp"
                             match='^(\.TH\s+"[^"]*"\s+\d\s+)"[^"]+"'
                           replace='\1"@@date@@"'
                            byline="true"
@@ -500,7 +492,7 @@
                     </then></if>
 
                     <xslt in="@{srcfile}"
-                         out="${mandir}/${@{srcfile}.basename}.@{section}"
+                         out="../../man/${@{srcfile}.basename}.@{section}"
                        style="../style/_generated/man.@{lang}.xsl">
                         <xmlcatalog refid="w3c-catalog" />
                         <param name="section" expression="@{section}" />
@@ -510,21 +502,21 @@
                     <if>
                         <and>
                             <available
-                                file="${mandir}/${@{srcfile}.basename}.@{section}.old"
+                                file="../../man/${@{srcfile}.basename}.@{section}.old"
                             />
                             <filesmatch
-                                file1="${mandir}/${@{srcfile}.basename}.@{section}.tmp"
-                                file2="${mandir}/${@{srcfile}.basename}.@{section}"
+                                file1="../../man/${@{srcfile}.basename}.@{section}.tmp"
+                                file2="../../man/${@{srcfile}.basename}.@{section}"
                             />
                         </and>
                     <then>
-                        <copy file="${mandir}/${@{srcfile}.basename}.@{section}.old"
-                            tofile="${mandir}/${@{srcfile}.basename}.@{section}"
+                        <copy file="../../man/${@{srcfile}.basename}.@{section}.old"
+                            tofile="../../man/${@{srcfile}.basename}.@{section}"
                             preservelastmodified="false" overwrite="true" />
                     </then>
                     <else>
                         <replaceregexp
-                               file="${mandir}/${@{srcfile}.basename}.@{section}"
+                               file="../../man/${@{srcfile}.basename}.@{section}"
                               match="@@date@@"
                             replace="${nroff.date}"
                         />
@@ -755,28 +747,9 @@
         <then>
         <echo message="building ZIP package (@{lang})..." />
 
-        <!-- get the current date -->
-        <tstamp>
-            <format property="maf.date.@{lang}"
-                     pattern="EEE MMM dd yyyy HH:mm:ss 'GMT-0000 (UTC)'"
-                    timezone="UTC" locale="en, US" />
-        </tstamp>
-
-        <!-- generate RDF file -->
-        <xslt in="../index${inputext.@{lang}}"
-             out="../_off/@{lang}/index.rdf"
-           style="../style/xsl/maf.xsl">
-            <param name="date" expression="${maf.date.@{lang}}" />
-            <param name="lang" expression="@{lang}" />
-        </xslt>
-
-        <!-- Newline issues -->
-        <fixcrlf srcdir="../_off/@{lang}" eol="lf" encoding="iso-8859-1"
-               includes="**/*.rdf" />
-
         <!-- pack it -->
-        <delete file="${distdir}/httpd-docs-${ap.httpd.version}.@{lang}.maff.zip" />
-        <zip destfile="${distdir}/httpd-docs-${ap.httpd.version}.@{lang}.maff.zip"
+        <delete file="${distdir}/httpd-docs-${ap.httpd.version}.@{lang}.zip" />
+        <zip destfile="${distdir}/httpd-docs-${ap.httpd.version}.@{lang}.zip"
             compress="true"
             encoding="ASCII">
             <zipfileset prefix="httpd-docs-${ap.httpd.version}.@{lang}"
