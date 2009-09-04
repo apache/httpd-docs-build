@@ -27,7 +27,7 @@ REM   - ignore external CLASSPATH
 REM   - set java stack size to 128 MB
 REM   - lower down verbosity (because the foreach task would be _very_ verbose
 REM     otherwise)
-REM   - lcp.bat is found in lib/ (instead of bin/)
+REM   - lcp.bat is found in bin/ (NOT IN lib/ FOR 1.7 and later!!!)
 REM
 REM   (don't know whether this all works unter win9x; tested on win2k) --nd
 
@@ -76,7 +76,7 @@ goto end
 :checkJava
 set _JAVACMD=%JAVACMD%
 set LOCALCLASSPATH=%CLASSPATH%
-for %%i in ("%ANT_HOME%\lib\*.jar") do call "%ANT_HOME%\lib\lcp.bat" %%i
+for %%i in ("%ANT_HOME%\lib\*.jar") do call "%ANT_HOME%\bin\lcp.bat" %%i
 
 if "%JAVA_HOME%" == "" goto noJavaHome
 if not exist "%JAVA_HOME%\bin\java.exe" goto noJavaHome
