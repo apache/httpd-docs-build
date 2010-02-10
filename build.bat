@@ -27,7 +27,7 @@ REM   - ignore external CLASSPATH
 REM   - set java stack size to 128 MB
 REM   - lower down verbosity (because the foreach task would be _very_ verbose
 REM     otherwise)
-REM   - lcp.bat is found in bin/ (NOT IN lib/ FOR 1.7 and later!!!)
+REM   - use only bundled ant!
 REM
 REM   (don't know whether this all works unter win9x; tested on win2k) --nd
 
@@ -39,6 +39,9 @@ set ANT_ARGS=-buildfile build.xml -logger org.apache.tools.ant.NoBannerLogger
 
 rem raise stack size ...
 set ANT_OPTS=-Xmx128m -mx128m
+
+set SAVE_ANT_HOME=%ANT_HOME%
+set ANT_HOME=
 
 rem set classpath
 set CLASSPATH=lib
@@ -76,7 +79,7 @@ goto end
 :checkJava
 set _JAVACMD=%JAVACMD%
 set LOCALCLASSPATH=%CLASSPATH%
-for %%i in ("%ANT_HOME%\lib\*.jar") do call "%ANT_HOME%\bin\lcp.bat" %%i
+for %%i in ("%ANT_HOME%\lib\*.jar") do call "%ANT_HOME%\lib\lcp.bat" %%i
 
 if "%JAVA_HOME%" == "" goto noJavaHome
 if not exist "%JAVA_HOME%\bin\java.exe" goto noJavaHome
@@ -101,6 +104,7 @@ echo.
 set LOCALCLASSPATH=
 set _JAVACMD=
 set ANT_CMD_LINE_ARGS=
+set ANT_HOME=%SAVE_ANT_HOME%
 
 if "%OS%"=="Windows_NT" @endlocal
 
