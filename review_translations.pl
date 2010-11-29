@@ -11,6 +11,7 @@ our %LANGS = (
         'fr' => 'French',
         'ja' => 'Japanese',
         'de' => 'German',
+        'es' => 'Spanish',
         'ko' => 'Korean',
         'tr' => 'Turkish'
         );
