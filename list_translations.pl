@@ -33,7 +33,8 @@ it will be overwritten.
 
 <p>The following modules have already been translated. If you are able
 to provide translations into any of these languages (or any others)
-please let us know.</p>
+please let us know. 
+(<a href="translations.html">Back to translations page</a>)</p>
 
 <table border="1">
 <tr><th>Document</th>
@@ -57,9 +58,9 @@ foreach my $doc ( sort @engfiles ) {
     }
     foreach my $l ( sort keys %LANGS ) {
         if ( $trans{$l} ) {
-            print '<td>X</td>';
+            print '<td>&#10004;</td>';
         } else {
-            print '<td></td>';
+            print '<td>-</td>';
         }
     }
     print "</tr>\n";
