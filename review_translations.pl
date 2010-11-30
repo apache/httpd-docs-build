@@ -87,7 +87,7 @@ sub directive_doc {
         print "<context>".$c."</context>";
     }
     print "</contextlist>\n";
-    print "<usage>Documentation not yet translated. Please see English version of document.</usage>\n";
+    print "<usage><p>Documentation not yet translated. Please see English version of document.</p></usage>\n";
     print "</directivesynopsis>\n\n";
 }
 
