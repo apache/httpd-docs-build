@@ -99,7 +99,7 @@ for $file (@files) {
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- GENERATED FROM XML: DO NOT EDIT -->
 
-<metafile>
+<metafile reference="${basename}.xml">
   <basename>$basename</basename>
   <path>$dirname</path>
   <relpath>$relative</relpath>
@@ -274,7 +274,7 @@ sample file:
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- GENERATED FROM XML: DO NOT EDIT -->
 
-<metafile>
+<metafile reference="quickreference.xml">
   <basename>quickreference</basename>
   <path>/mod/</path>
   <relpath>..</relpath>
