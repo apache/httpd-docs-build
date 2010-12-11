@@ -338,7 +338,7 @@
         <!-- iterate over all desired files -->
         <for param="srcfile">
             <path>
-                <fileset dir="../" includes="**/*${inputext.@{lang}}">
+                <fileset dir="../" includes="**/*${inputext.@{lang}}" excludes="mod/*${inputext.@{lang}}">
                     <patternset refid="excludes" />
                     <patternset refid="scratch" />
                 </fileset>
@@ -353,6 +353,36 @@
                 <dependset>
                     <srcfileset dir="${@{srcfile}.dirname}"
                            includes="${@{srcfile}.basename}.xml.meta" />
+                    <targetfileset dir="${@{srcfile}.dirname}"
+                       includes="${@{srcfile}.basename}${outputext.@{lang}}" />
+                </dependset>
+
+                <xslt in="@{srcfile}"
+                     out="${@{srcfile}.dirname}/${@{srcfile}.basename}${outputext.@{lang}}"
+                   style="../style/manual.@{lang}.xsl">
+                    <xmlcatalog refid="w3c-catalog" />
+                </xslt>
+            </sequential>
+        </for>
+
+        <for param="srcfile">
+            <path>
+                <fileset dir="../" includes="mod/*${inputext.@{lang}}">
+                    <patternset refid="excludes" />
+                    <patternset refid="scratch" />
+                </fileset>
+            </path>
+
+            <sequential>
+                <basename property="@{srcfile}.basename" file="@{srcfile}"
+                            suffix="${inputext.@{lang}}" />
+                <dirname  property="@{srcfile}.dirname"  file="@{srcfile}" />
+
+                <!-- depends on the accompanying metafile -->
+                <dependset>
+                    <srcfileset dir="${@{srcfile}.dirname}"
+                           includes="${@{srcfile}.basename}.xml.meta
+                                     ${@{srcfile}.basename}.xml" />
                     <targetfileset dir="${@{srcfile}.dirname}"
                        includes="${@{srcfile}.basename}${outputext.@{lang}}" />
                 </dependset>

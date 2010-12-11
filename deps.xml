@@ -60,8 +60,7 @@
                includes="*.xml"
                excludes="index.xml*
                          *-dict.xml*
-                         *.xml.meta
-                         ${ap.modules.@{lang}.translated}" />
+                         *.xml.meta" />
 
         <targetfileset dir="../"
                   includes="mod/index${outputext.@{lang}}
@@ -85,7 +84,7 @@
                   excludes="${ap.noxml.@{lang}}" />
     </dependset>
     <dependset>
-        <srcfileset    dir="../faq"
+        <srcfileset    dir="../faq/"
                   includes="*.xml"
                   excludes="index.xml*
                             all_in_one.xml*" />
@@ -95,7 +94,7 @@
                   excludes="${ap.noxml.@{lang}}" />
     </dependset>
     <dependset>
-        <srcfileset    dir="../faq"
+        <srcfileset    dir="../faq/"
                   includes="*${inputext.@{lang}}"
                   excludes="index.xml*
                             all_in_one.xml*" />
