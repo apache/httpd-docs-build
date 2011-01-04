@@ -14,7 +14,7 @@ our %LANGS = (
         'tr' => 'Turkish'
         );
 
-my @engfiles = glob '*.xml';
+my @engfiles = glob '*.xml mod/*.xml ssl/*.xml vhosts/*.xml programs/*.xml rewrite/*.xml';
 
 print qq~<?xml version="1.0"?>
 <document>
