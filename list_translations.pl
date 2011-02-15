@@ -11,7 +11,8 @@ our %LANGS = (
         'de' => 'German',
         'es' => 'Spanish',
         'ko' => 'Korean',
-        'tr' => 'Turkish'
+        'tr' => 'Turkish',
+        'zh-cn' => 'Simplified Chinese'
         );
 
 my @engfiles = glob '*.xml mod/*.xml ssl/*.xml vhosts/*.xml programs/*.xml rewrite/*.xml';

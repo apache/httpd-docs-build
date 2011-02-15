@@ -13,7 +13,8 @@ our %LANGS = (
         'de' => 'German',
         'es' => 'Spanish',
         'ko' => 'Korean',
-        'tr' => 'Turkish'
+        'tr' => 'Turkish',
+        'zh-cn' => 'Simplified Chinese'
         );
 
 getopts("xl:m:");
