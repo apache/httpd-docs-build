@@ -29,6 +29,7 @@
 
 # against fat fingers
 use strict;
+use warnings;
 
 # for file operations
 use FindBin;
@@ -152,6 +153,7 @@ for $file (@files) {
     }
 } # for (@files)
 
+my $no_git;
 # get revision of the english original
 sub reven($$) {
     my $dirname = shift;
@@ -175,6 +177,22 @@ sub reven($$) {
             or die "could not close file '$curpath' ($!), stopped";
 
         $revs{"$dirname$basename"} = $rev;
+    }
+    unless ($rev || $no_git) {
+        # LastChangedRevision is not available with git-svn or a git checkout
+        # from git.apache.org. Try to get the revision from the log.
+        my $curpath = docpath("$dirname$basename.xml");
+        # XXX: This does not work if there has been a local commit
+        my $log = qx{git log -1 $curpath 2> /dev/null};
+        if ($? == 0) {
+            if ( $log =~ /git-svn-id:[^\@]+\@(\d+)\s/ ) {
+                $revs{"$dirname$basename"} = $rev = $1;
+            }
+        }
+        else {
+            # no git repo
+            $no_git = 1;
+        }
     }
 
     return $rev;
