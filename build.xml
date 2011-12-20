@@ -441,21 +441,22 @@
 
         <!-- iterate over all (8) files -->
         <nroff.generic.loop lang="@{lang}" section="8"
-                files="ab${inputext.@{lang}}
-                       apachectl${inputext.@{lang}}
-                       apxs${inputext.@{lang}}
+                files="apachectl${inputext.@{lang}}
                        httpd${inputext.@{lang}}
                        htcacheclean${inputext.@{lang}}
-                       logresolve${inputext.@{lang}}
                        rotatelogs${inputext.@{lang}}
                        suexec${inputext.@{lang}}"/>
 
         <!-- iterate over all (1) files -->
         <nroff.generic.loop lang="@{lang}" section="1"
-                files="dbmmanage${inputext.@{lang}}
+                files="ab${inputext.@{lang}}
+                       apxs${inputext.@{lang}}
+                       dbmmanage${inputext.@{lang}}
+                       firehose${inputext.@{lang}}
                        htdbm${inputext.@{lang}}
                        htdigest${inputext.@{lang}}
-                       htpasswd${inputext.@{lang}}"/>
+                       htpasswd${inputext.@{lang}}
+                       logresolve${inputext.@{lang}}"/>
 
         <!-- cleanup -->
         <delete>
