@@ -456,6 +456,7 @@
                        htdbm${inputext.@{lang}}
                        htdigest${inputext.@{lang}}
                        htpasswd${inputext.@{lang}}
+                       httxt2dbm${inputext.@{lang}}
                        logresolve${inputext.@{lang}}"/>
 
         <!-- cleanup -->
