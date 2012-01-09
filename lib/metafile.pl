@@ -219,10 +219,10 @@ sub outofdate($$$) {
                 local $_;
                 while (<FILE>) {
                     $rev = $1, $orev=$2, last
-                        if /<!--\s*English\s+Revision:\s*([^\s:]+)
+                        if /<!--\s*English\s+Revision\s*:\s*([^\s:]+)
                             (?::(\S+)\s+\(outdated\))?\s+-->/xi
                                              or
-                           /<!--\s*English\s+Revision:\s*(\S+)\s+
+                           /<!--\s*English\s+Revision\s*:\s*(\S+)\s+
                             (?:\(outdated:\s*(\S+)\s*\)\s+)?-->/xi;
                 }
             }
@@ -244,11 +244,11 @@ sub outofdate($$$) {
                         or die "could not close file '$curpath' ($!), stopped";
 
                     unless (
-                        $cont =~ s{<!--\s*English\s+Revision:\s*([^\s:]+)
+                        $cont =~ s{<!--\s*English\s+Revision\s*:\s*([^\s:]+)
                                    (?::\S+\s+\(outdated\))?\s+-->}
                             {<!-- English Revision: $1:$reven (outdated) -->}ix
                     ) {
-                        $cont =~ s{<!--\s*English\s+Revision:\s*(\S+)\s+
+                        $cont =~ s{<!--\s*English\s+Revision\s*:\s*(\S+)\s+
                                    (?:\(outdated[^)]*\)\s+)?-->}
                             {<!-- English Revision: $1:$reven (outdated) -->}ix
                     }
