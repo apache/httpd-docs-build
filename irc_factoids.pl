@@ -64,7 +64,7 @@ sub HELP_MESSAGE {
 Usage: 
 
 cd manual/mod
-../../review_translations.pl -m mod_rewrite
+$0 -m mod_rewrite
 
 Outputs IRC factoids for the directives in this module, which can then
 be fed to the IRC bot.
