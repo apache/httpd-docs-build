@@ -38,7 +38,7 @@ rem lower down logger verbosity
 set ANT_ARGS=-buildfile build.xml -logger org.apache.tools.ant.NoBannerLogger
 
 rem raise stack size ...
-set ANT_OPTS=-Xmx128m -mx128m
+set ANT_OPTS=-Xss512k -Xmx128m -mx128m
 
 set SAVE_ANT_HOME=%ANT_HOME%
 set ANT_HOME=
