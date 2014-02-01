@@ -276,6 +276,7 @@
             basedir="${langdir}" destdir="${styledir}" includes="*.xml">
         <mapper type="glob" from="*.xml" to="manual.*.xsl"/>
         <param name="type" expression="manual" />
+        <param name="retired" expression="${ap.retired}" />
     </xslt>
 
     <!-- create language list (in is unused -> arbitrary xml file) -->
