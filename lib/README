@@ -31,13 +31,14 @@ jakarta-oro.jar
     URL: http://jakarta.apache.org/oro/
 
 xalan.jar
-    Description: xalan (xslt processor), version 2.5.2 + patch
-    patch taken from https://issues.apache.org/jira/browse/XALANJ-1710
-      (second one:
-       https://issues.apache.org/jira/secure/attachment/17150/apache.patch.24279.txt )
+serializer.jar
+    Description: xalan (xslt processor), version 2.7.1 + patch
+    (xalan_2_7_1.patch)
+    patch adds a newline between xml declaration and doctype, even if
+    indent = "no"
     URL: http://xml.apache.org/xalan-j/
 
 xercesImpl.jar
 xml-apis.jar
-    Description: xerces XML parser, version 2.7.0
+    Description: xerces XML parser, version 2.9.0
     URL: http://xml.apache.org/xerces2-j/

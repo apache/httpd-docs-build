@@ -1,0 +1,21 @@
+diff -Nur xalan-j_2_7_1~/src/org/apache/xml/serializer/ToXMLStream.java xalan-j_2_7_1/src/org/apache/xml/serializer/ToXMLStream.java
+--- xalan-j_2_7_1~/src/org/apache/xml/serializer/ToXMLStream.java
++++ xalan-j_2_7_1/src/org/apache/xml/serializer/ToXMLStream.java
+@@ -147,7 +147,7 @@
+                     writer.write('\"');
+                     writer.write(standalone);
+                     writer.write("?>");
+-                    if (m_doIndent) {
++                    //if (m_doIndent) {
+                         if (m_standaloneWasSpecified
+                                 || getDoctypePublic() != null
+                                 || getDoctypeSystem() != null) {
+@@ -162,7 +162,7 @@
+                             // in these rare cases?                           
+                             writer.write(m_lineSep, 0, m_lineSepLen);
+                         }
+-                    }
++                    //}
+                 } 
+                 catch(IOException e)
+                 {
