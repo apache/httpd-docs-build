@@ -700,22 +700,33 @@
             <fileset dir="../@{dir}/@{lang}"
                 includes="**/*.xml **/*${inputext.@{lang}}
                           **/*.xml.meta
-                          style/chm style/chm/**/*
-                          style/lang style/lang/**/*
-                          style/man style/man/**/*
-                          style/w3c style/w3c/**/*
-                          style/xsl style/xsl/**/*
-                          style/zip style/zip/**/*
-                          style/latex style/latex/**/*
+                          style/chm/**/*
+                          style/lang/**/*
+                          style/man/**/*
+                          style/w3c/**/*
+                          style/xsl/**/*
+                          style/zip/**/*
+                          style/latex/**/*
                           style/*.dtd style/*.xsl style/*.xml
-                          style/_generated style/_generated/**/*
+                          style/_generated/**/*
+                          style/scripts/MINIFY
                           style/build.properties
+                          style/version.ent
                           images/apache_header*
                           images/favicon.ico
                           images/home* images/index*
                           images/sub*  images/pixel*
                           **/.*
                          "/>
+        </delete>
+
+        <delete includeemptydirs="true">
+            <fileset dir="../@{dir}/@{lang}">
+                <and>
+                    <size value="0" />
+                    <type type="dir" />
+                </and>
+            </fileset>
         </delete>
         </then></if>
     </sequential>
