@@ -21,12 +21,22 @@ my $xml = $xs->XMLin( $file );
 print "forget $opt_m\n" if $opt_f;
 print "$opt_m is " . 'http://httpd.apache.org/docs/' . ( $opt_v ? $opt_v : 'current' ) . '/mod/' . $opt_m .  '.html' . "\n\n";
 
-my @directives;
-foreach my $directive ( sort( keys %{ $xml->{directivesynopsis} } ) ) {
+my $directives = $xml->{directivesynopsis};
 
-    my $d = $xml->{directivesynopsis}->{$directive};
+my %directives;
+# Was there more than one?
+if ( $directives->{name} ) { # There was only one
+   %directives = ( $directives->{name} => $directives ); 
+} else { # More than one
+    %directives = %{ $xml->{directivesynopsis} };
+}
 
-    my $desc = $d->{description}; $desc =~ s/[\r\n]/ /gs;
+foreach my $directive ( sort( keys %directives ) ) {
+
+    my $d = $directives{$directive};
+
+    my $desc = $d->{description}; 
+    $desc =~ s/[\r\n]/ /gs;
     my $name = $directive . ( $opt_v ? " $opt_v" : '' );
 
     print "forget $name\n" if $opt_f;
