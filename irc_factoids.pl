@@ -28,7 +28,7 @@ my %directives;
 if ( $directives->{name} ) { # There was only one
    %directives = ( $directives->{name} => $directives ); 
 } else { # More than one
-    %directives = %{ $xml->{directivesynopsis} };
+    %directives = defined( $xml->{directivesynopsis} ) ? %{ $xml->{directivesynopsis} } : () ;
 }
 
 foreach my $directive ( sort( keys %directives ) ) {
