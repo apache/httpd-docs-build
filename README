@@ -1,4 +1,9 @@
-To completely rebuild the trunk/2.2 doccos, use:
+This repository is checked out into docs/manual/build
+of an httpd working tree to support documentation
+authoring, and works on all httpd branches from 2.0
+through trunk.
+
+To completely rebuild the docs, use:
 
       ./build.sh all convmap
 
@@ -9,8 +14,4 @@ To check for valid XML:
 To check the resulting HTML:
 
       ./build.sh validate-xhtml
-
-For 2.0, use:
-
-      ./build.sh all
 
