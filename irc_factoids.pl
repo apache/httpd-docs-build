@@ -41,8 +41,12 @@ foreach my $directive ( sort( keys %directives ) ) {
 
     print "forget $name\n" if $opt_f;
     print "$name is ";
-    print 'http://httpd.apache.org/docs/' . ( $opt_v ? $opt_v : 'current' ) . '/mod/' . $opt_m .  '.html#' . lc( $directive ) .  " - ";
-    print $desc . "\n";
+    print 'http://httpd.apache.org/docs/' . ( $opt_v ? $opt_v : 'current' ) . '/mod/' . $opt_m .  '.html#' . lc( $directive );
+    if ( $desc ) {
+        print " - " . $desc;
+    }
+    print "\n";
+
 
     print "forget $name default\n" if $opt_f;
     if ( $d->{default} ) {
