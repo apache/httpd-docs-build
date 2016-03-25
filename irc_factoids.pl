@@ -39,8 +39,8 @@ foreach my $directive ( sort( keys %directives ) ) {
     $desc =~ s/[\r\n]/ /gs;
     my $name = $directive . ( $opt_v ? " $opt_v" : '' );
 
-    print "forget $name\n" if $opt_f;
-    print "$name is ";
+    print "fajita: forget $name\n" if $opt_f;
+    print "fajita: $name is ";
     print 'http://httpd.apache.org/docs/' . ( $opt_v ? $opt_v : 'current' ) . '/mod/' . $opt_m .  '.html#' . lc( $directive );
     if ( $desc ) {
         print " - " . $desc;
@@ -48,22 +48,22 @@ foreach my $directive ( sort( keys %directives ) ) {
     print "\n";
 
 
-    print "forget $name default\n" if $opt_f;
+    print "fajita: forget $name default\n" if $opt_f;
     if ( $d->{default} ) {
-        print "$name default is " . $d->{default} . "\n";
+        print "fajita: $name default is " . $d->{default} . "\n";
     } else {
-        print "$name default is <reply>$name has no default value\n";
+        print "fajita: $name default is <reply>$name has no default value\n";
     }
 
-    print "forget $name override\n" if $opt_f;
+    print "fajita: forget $name override\n" if $opt_f;
     if ( $d->{override} ) {
-        print "$name override is <reply>$name may be used in an .htaccess file if AllowOverride is set to ".$d->{override}."\n";
+        print "fajita: $name override is <reply>$name may be used in an .htaccess file if AllowOverride is set to ".$d->{override}."\n";
     } else {
-        print "$name override is <reply>$name may not be used in a .htaccess file\n";
+        print "fajita: $name override is <reply>$name may not be used in a .htaccess file\n";
     }
 
-    print "forget $name context\n" if $opt_f;
-    print "$name context is <reply>$name may be used in the following contexts: ";
+    print "fajita: forget $name context\n" if $opt_f;
+    print "fajita: $name context is <reply>$name may be used in the following contexts: ";
     my $contexts = ref( $d->{contextlist}->{context} ) ?  $d->{contextlist}->{context} : [ $d->{contextlist}->{context} ];
     print ( join ', ', @{ $contexts } ) . "\n";
     print "\n\n";
