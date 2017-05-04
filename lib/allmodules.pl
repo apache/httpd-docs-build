@@ -65,12 +65,12 @@ opendir(DIR, $curpath)
 closedir(DIR)
     or die "could not close directory '$curpath' ($!), stopped";
 
-push @suffix => map { s/^(?:index|directives|quickreference)\.xml//; $_ }
-       grep /^(?:index|directives|quickreference)\.xml/
+push @suffix => map { s/^(?:index|directives|quickreference|overrides)\.xml//; $_ }
+       grep /^(?:index|directives|quickreference|overrides)\.xml/
     => @{[ @mod_files ]}; # copy, because $_ will be modified inline
 
 # keep only real module files in @mod_files
-@mod_files = grep !/^(?:index|directives|quickreference)\.xml/
+@mod_files = grep !/^(?:index|directives|quickreference|overrides)\.xml/
     => grep !/-dict\.xml/
     => grep !/^allmodules\.xml/
     => @mod_files;

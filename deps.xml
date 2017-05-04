@@ -65,6 +65,7 @@
         <targetfileset dir="../"
                   includes="mod/index${outputext.@{lang}}
                             mod/directives${outputext.@{lang}}
+                            mod/overrides${outputext.@{lang}}
                             mod/quickreference${outputext.@{lang}}
                             sitemap${outputext.@{lang}}"
                   excludes="${ap.noxml.@{lang}}" />
@@ -79,6 +80,7 @@
         <targetfileset dir="../"
                   includes="mod/index${outputext.@{lang}}
                             mod/directives${outputext.@{lang}}
+                            mod/overrides${outputext.@{lang}}
                             mod/quickreference${outputext.@{lang}}
                             sitemap${outputext.@{lang}}"
                   excludes="${ap.noxml.@{lang}}" />
@@ -127,6 +129,15 @@
                   includes="directiveindex.xsl" />
         <targetfileset dir="../"
                   includes="mod/directives${outputext.@{lang}}"
+                  excludes="${ap.noxml.@{lang}}" />
+    </dependset>
+
+    <!-- override index -->
+    <dependset>
+        <srcfileset    dir="../style/xsl"
+                  includes="overrideindex.xsl" />
+        <targetfileset dir="../"
+                  includes="mod/overrides${outputext.@{lang}}"
                   excludes="${ap.noxml.@{lang}}" />
     </dependset>
 
@@ -200,6 +211,7 @@
                   excludes="mod/*-dict${outputext.@{lang}}
                             mod/index${outputext.@{lang}}
                             mod/directives${outputext.@{lang}}
+                            mod/overrides${outputext.@{lang}}
                             mod/quickreference${outputext.@{lang}}
                             ${ap.noxml.@{lang}}" />
     </dependset>
