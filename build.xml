@@ -94,6 +94,26 @@
 </target>
 
 
+<!-- ready to use list of directives for prettify.js                      -->
+<!-- ==================================================================== -->
+<target name="prettify" depends="modulelists" unless="prettify.done"
+        description="- (re-)builds convenience map file if necessary">
+    <echo message="checking convenience map ..." />
+
+    <!-- <dependencies.prettify /> -->
+
+    <xslt style="../style/xsl/list_for_prettify.xsl"
+            in="${ap.docroot}/mod/allmodules.xml"
+            out="${ap.docroot}/list_for_prettify.txt">
+        <xmlcatalog refid="w3c-catalog" />
+    </xslt>
+
+    <echo message="List of directives for prettify.js are up to date." />
+    <echo message="They now have to be copy/pasted into it (see comments in list_for_prettify.txt)." />
+    <property name="prettify.done" value="yes!" />
+</target>
+
+
 <!-- XHTML validation.                                                    -->
 <!-- The resulting output is intended to be valid (X)HTML. Check it from  -->
 <!-- time to time...                                                      -->
