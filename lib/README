@@ -36,7 +36,7 @@ serializer.jar
     (xalan_2_7_1.patch)
     patch adds a newline between xml declaration and doctype, even if
     indent = "no"
-    URL: http://xml.apache.org/xalan-j/
+    URL: http://xalan.apache.org/index.html
 
 xercesImpl.jar
 xml-apis.jar
