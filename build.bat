@@ -46,9 +46,6 @@ set ANT_HOME=
 rem set classpath
 set CLASSPATH=lib
 
-rem set regexp engine
-set REGEXP=-Dant.regexp.regexpimpl=org.apache.tools.ant.util.regexp.JakartaOroRegexp
-
 rem %~dp0 is expanded pathname of the current script under NT
 set DEFAULT_ANT_HOME=%~dp0.
 
@@ -98,7 +95,7 @@ echo   to the installation directory of java.
 echo.
 
 :runAnt
-"%_JAVACMD%" %ANT_OPTS% -Xbootclasspath/p:"%LOCALCLASSPATH%" -classpath "%LOCALCLASSPATH%" %REGEXP% "-Dant.home=%ANT_HOME%" org.apache.tools.ant.Main %ANT_ARGS% %ANT_CMD_LINE_ARGS%
+"%_JAVACMD%" %ANT_OPTS% -Xbootclasspath/p:"%LOCALCLASSPATH%" -classpath "%LOCALCLASSPATH%" "-Dant.home=%ANT_HOME%" org.apache.tools.ant.Main %ANT_ARGS% %ANT_CMD_LINE_ARGS%
 
 :end
 set LOCALCLASSPATH=

@@ -34,9 +34,6 @@ ANT_ARGS="-buildfile build.xml"
 # lower down logger verbosity
 ANT_ARGS="-logger org.apache.tools.ant.NoBannerLogger $ANT_ARGS"
 
-# set regexp engine
-ANT_ARGS="-Dant.regexp.regexpimpl=org.apache.tools.ant.util.regexp.JakartaOroRegexp $ANT_ARGS"
-
 # raise heap/stack size...
 ANT_OPTS="-Xss1024k -Xmx256m -mx256m"
 

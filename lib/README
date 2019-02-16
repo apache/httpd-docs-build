@@ -7,7 +7,6 @@ allmodules.pl
     Description: maintenance script for mod/allmodules.xml*
 
 ant.jar
-ant-apache-oro.jar
 ant-bootstrap.jar
 ant-launcher.jar
 ant-nodeps.jar
@@ -25,10 +24,6 @@ DocUtil.pm
 
 metafile.pl
     Description: maintenance script for *.xml.meta files
-
-jakarta-oro.jar
-    Description: Regex engine (and more), Version 2.0.8
-    URL: http://jakarta.apache.org/oro/
 
 xalan.jar
 serializer.jar
